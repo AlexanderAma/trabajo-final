@@ -1,0 +1,40 @@
+{% extends "critica_cine/base.html" %}
+
+{% block titulo %}
+
+<title>Blog de cine y series: Peliculas </title>
+
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+<section>
+    <div>
+        <h1>Lista de peliculas</h1>
+        <a href="{% url "crear_pelicula" %}">Añadir pelicula</a>
+
+        <form action={% url "buscar_pelicula" %} method="post">
+            {% csrf_token %}
+            
+            <input type="text" name="nombre_de_pelicula">
+            <input type="submit" value="Enviar">
+        
+        </form>        
+               
+        <br></br>
+        <ul>
+            {% for pelicula in peliculas %}<br>
+            <li>Pelicula: {{pelicula.nombre_de_pelicula}}<br>
+                Director: {{pelicula.director}}<br>
+                Pais de origen: {{pelicula.pais_de_origen}}<br>
+                Descripción: {{pelicula.descripcion}}<br>
+                Fecha de estreno: {{pelicula.fecha_estreno}}<br>
+            
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
+{% endblock contenido %}

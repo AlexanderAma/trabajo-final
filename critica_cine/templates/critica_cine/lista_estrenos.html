@@ -1,0 +1,34 @@
+{% extends "critica_cine/base.html" %}
+
+{% block titulo %}
+
+<title>Blog de cine y series: Estrenos </title>
+
+{% endblock titulo %}
+
+
+
+
+
+{% block contenido %}
+<section>
+    <div>
+        <h1>Proximos estrenos</h1>
+
+        <a href="{% url "crear_estreno" %}">Añadir estreno</a>
+        <br></br>
+
+        <ul>
+            {% for estreno in estrenos %}<br>
+            <li>Nombre de pelicula: {{estreno.nombre_de_pelicula}}<br> 
+                Director: {{estreno.director}}<br>
+                Pais de origen: {{estreno.pais_de_origen}}<br>
+                Descripción: {{estreno.descripcion}}<br> 
+                
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
+{% endblock contenido %}

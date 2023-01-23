@@ -1,0 +1,31 @@
+{% extends "critica_cine/base.html" %}
+
+{% block titulo %}
+
+<title>Blog de cine y series: Series </title>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+<section>
+    <div>
+        <h1>Lista de series</h1>
+        <a href="{% url "crear_serie" %}">Añadir serie</a>
+        <br></br>
+        
+        <ul>
+            {% for serie in series %}<br>
+            <li>Serie: {{serie.nombre_de_pelicula}}<br>
+                Director: {{serie.director}}<br>
+                Pais de origen: {{serie.pais_de_origen}}<br>
+                Descripción: {{serie.descripcion}}<br>
+                Plataforma: {{serie.plataforma}}<br>
+            
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
+{% endblock contenido %}
